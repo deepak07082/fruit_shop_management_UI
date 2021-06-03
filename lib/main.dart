@@ -29,7 +29,9 @@ class _IntroPageState extends State<IntroPage> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
-          children: [],
+          children: [
+            Image.asset("assets/orange.png"),
+          ],
         ),
       ),
     );
