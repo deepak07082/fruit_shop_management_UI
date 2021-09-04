@@ -1,8 +1,15 @@
+import 'dart:io';
+
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:fruit_shop/Screens/fruitlistview.dart';
 
 import 'Screens/dashboard.dart';
+import 'Screens/loginpage.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
@@ -15,6 +22,8 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => IntroPage(),
         '/dashboard': (context) => Dashboard(),
+        '/fruitlist': (context) => Fruitlistview(),
+        '/login': (context) => LoginScreen(),
       },
       theme: ThemeData(
         primarySwatch: Colors.blue,

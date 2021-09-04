@@ -49,8 +49,8 @@ class Dashboardcard extends StatelessWidget {
         padding: EdgeInsets.all(10),
         child: Column(
           children: [
-            Image.asset(
-              'lib/assets/' + imgpath,
+            Image.network(
+              imgpath,
               height: 150,
             ),
             Text(
@@ -86,10 +86,13 @@ class Dashboardcard extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                Icon(
-                  fav == true ? Icons.favorite : Icons.favorite_border,
-                  color: fav == true ? Colors.red : Colors.white,
-                  size: 17,
+                InkWell(
+                  onTap: favontap,
+                  child: Icon(
+                    fav == true ? Icons.favorite : Icons.favorite_border,
+                    color: fav == true ? Colors.red : Colors.white,
+                    size: 17,
+                  ),
                 ),
               ],
             ),

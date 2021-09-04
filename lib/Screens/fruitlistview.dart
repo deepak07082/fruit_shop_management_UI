@@ -7,12 +7,12 @@ import 'package:fruit_shop/Widgets/dashboardcard.dart';
 import '../common.dart';
 import 'detailpage.dart';
 
-class Dashboard extends StatefulWidget {
+class Fruitlistview extends StatefulWidget {
   @override
-  _DashboardState createState() => _DashboardState();
+  _FruitlistviewState createState() => _FruitlistviewState();
 }
 
-class _DashboardState extends State<Dashboard> {
+class _FruitlistviewState extends State<Fruitlistview> {
   Response response;
   String serverurl = 'http://127.0.0.1:8000';
 
@@ -33,7 +33,7 @@ class _DashboardState extends State<Dashboard> {
   }
 
   fetchapi() async {
-    response = await dio.get(serverurl + '/fruits/');
+    response = await dio.get(serverurl + '/fruitslist/');
     print(response.data.toString());
     print(response.statusCode.toString());
     setState(() {
@@ -79,18 +79,13 @@ class _DashboardState extends State<Dashboard> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        title: Text(
+          'Fruits',
+          style: TextStyle(color: Colors.black),
+        ),
+        centerTitle: true,
         elevation: 0,
         backgroundColor: Colors.white,
-        actions: [
-          Icon(
-            Icons.card_travel,
-            color: Colors.black,
-            size: 16,
-          ),
-          SizedBox(
-            width: 20,
-          ),
-        ],
         leading: Icon(
           Icons.menu,
           color: Colors.black,
@@ -109,78 +104,10 @@ class _DashboardState extends State<Dashboard> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          "Hi Deepak",
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 25,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
                         SizedBox(
-                          height: 15,
-                        ),
-                        Text(
-                          "Find fresh fruits what you want",
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 14,
-                          ),
-                        ),
-                        SizedBox(
-                          height: 8,
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                            color: Colors.grey[300],
-                            borderRadius: BorderRadius.circular(40),
-                          ),
-                          child: TextFormField(
-                            decoration: InputDecoration(
-                              prefixIcon: Icon(
-                                Icons.search,
-                                color: Colors.black,
-                              ),
-                              hintText: 'Search fresh fruits',
-                              border: InputBorder.none,
-                              hintStyle: TextStyle(
-                                color: Colors.black,
-                                fontSize: 12,
-                              ),
-                              contentPadding: EdgeInsets.all(15),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 15,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              "Recommended",
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 17,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            Text(
-                              "View all",
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 12,
-                              ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 10,
+                          height: 3,
                         ),
                         for (var i = 0; i < mainlist.length; i++)
-                          // Text(mainlist[i].length.toString()),
-
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -261,67 +188,6 @@ class _DashboardState extends State<Dashboard> {
                           ),
                         SizedBox(
                           height: 10,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Container(
-                                  padding: EdgeInsets.symmetric(
-                                    horizontal: 20,
-                                    vertical: 13,
-                                  ),
-                                  decoration: BoxDecoration(
-                                    color: Color(0xFFf15c00),
-                                    borderRadius: BorderRadius.circular(17),
-                                  ),
-                                  child: Column(
-                                    children: [
-                                      Text(
-                                        "Best 50+ Fresh Fruits",
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.w600,
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        height: 5,
-                                      ),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          InkWell(
-                                            onTap: () {
-                                              Navigator.pushNamed(
-                                                  context, '/fruitlist');
-                                            },
-                                            child: Container(
-                                              padding: EdgeInsets.symmetric(
-                                                horizontal: 15,
-                                                vertical: 5,
-                                              ),
-                                              decoration: BoxDecoration(
-                                                color: Colors.white,
-                                                borderRadius:
-                                                    BorderRadius.circular(7),
-                                              ),
-                                              child: Center(
-                                                child: Text("Go"),
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
                         ),
                       ],
                     ),
